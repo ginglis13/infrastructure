@@ -1,13 +1,18 @@
 import * as cdk from 'aws-cdk-lib';
+import * as ecr from 'aws-cdk-lib/aws-ecr';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 
 import { CloudfrontCdn } from './cloudfront_cdn';
 
+interface ContinuousIntegrationStackProps extends cdk.StackProps {
+  rootfsEcrRepository: ecr.Repository;
+}
+
 // ContinuousIntegrationStack - AWS stack for supporting Finch's continuous integration process
 export class ContinuousIntegrationStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, stage: string, props?: cdk.StackProps) {
+  constructor(scope: Construct, id: string, stage: string, props: ContinuousIntegrationStackProps) {
     super(scope, id, props);
 
     const githubDomain = 'token.actions.githubusercontent.com';
@@ -30,7 +35,9 @@ export class ContinuousIntegrationStack extends cdk.Stack {
     cfnRole.addOverride('Properties.AssumeRolePolicyDocument.Statement.0.Condition', {
       StringLike: {
         'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com',
-        'token.actions.githubusercontent.com:sub': 'repo:runfinch/*'
+        'token.actions.githubusercontent.com:sub': 'repo:ginglis13/infrastructure',
+        'inspector2:Enable': '*',
+
       }
     });
 
@@ -42,6 +49,9 @@ export class ContinuousIntegrationStack extends cdk.Stack {
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
     });
     bucket.grantReadWrite(githubActionsRole);
+
+    const repo = props.rootfsEcrRepository;
+    repo.grantPullPush(githubActionsRole);
 
     new CloudfrontCdn(this, 'DependenciesCloudfrontCdn', {
       bucket

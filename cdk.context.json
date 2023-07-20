@@ -127,5 +127,167 @@
   "ami:account=019528120233:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0c6d905d74b45d00a",
   "ami:account=019528120233:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0e64f85d193de79ad",
   "ami:account=019528120233:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-11.7*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0b6c84efbea5e6bb6",
-  "ami:account=019528120233:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-11.7*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-06795a977cbd1adf1"
+  "ami:account=019528120233:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-11.7*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-06795a977cbd1adf1",
+  "vpc-provider:account=458358962224:filter.isDefault=true:region=us-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-044d6fb7d87ca432f",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "458358962224",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-00dc9ae61079bf1da",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-west-2a",
+            "routeTableId": "rtb-0acfa26af3242c4d5"
+          },
+          {
+            "subnetId": "subnet-02ca1e155b1b9451f",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-west-2b",
+            "routeTableId": "rtb-0acfa26af3242c4d5"
+          },
+          {
+            "subnetId": "subnet-08f7a82e8c62e68a7",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-west-2c",
+            "routeTableId": "rtb-0acfa26af3242c4d5"
+          },
+          {
+            "subnetId": "subnet-0530ba6e5908d576c",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-west-2d",
+            "routeTableId": "rtb-0acfa26af3242c4d5"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=458358962224:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-0d4a16c69c1be18c7",
+  "ami:account=458358962224:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-09bb28e86b754a476",
+  "ami:account=458358962224:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-0e5349f5a75d185ea",
+  "ami:account=458358962224:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-00c65df9e5e99ed74",
+  "vpc-provider:account=458358962224:filter.isDefault=true:region=us-east-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-08278385dbebc9d49",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "458358962224",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0222384d2840df414",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-2a",
+            "routeTableId": "rtb-0ba8c42a2a7111c45"
+          },
+          {
+            "subnetId": "subnet-016788acf9e815467",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-2b",
+            "routeTableId": "rtb-0ba8c42a2a7111c45"
+          },
+          {
+            "subnetId": "subnet-0ddd83bd5bc1c52c7",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-2c",
+            "routeTableId": "rtb-0ba8c42a2a7111c45"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=458358962224:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0443fe38484268e21",
+  "ami:account=458358962224:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0b6842ad7bc30bedf",
+  "ami:account=458358962224:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-060469173fad1c7e2",
+  "ami:account=458358962224:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0cc7b915a6e8c3bf4",
+  "ami:account=458358962224:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-11.7*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0e9a23cb322a7e6dc",
+  "ami:account=458358962224:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-11.7*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-east-2": "ami-0be3fb4e847c0960c",
+  "vpc-provider:account=701183258884:filter.isDefault=true:region=us-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-03a4ddcfcbe63d3d9",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "701183258884",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0643ead84247d3211",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-west-2a",
+            "routeTableId": "rtb-0984ad877944de5c6"
+          },
+          {
+            "subnetId": "subnet-051cbacd3df1f3161",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-west-2b",
+            "routeTableId": "rtb-0984ad877944de5c6"
+          },
+          {
+            "subnetId": "subnet-0227b2551a1f7f3bf",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-west-2c",
+            "routeTableId": "rtb-0984ad877944de5c6"
+          },
+          {
+            "subnetId": "subnet-00a26ced71dfd1fd8",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-west-2d",
+            "routeTableId": "rtb-0984ad877944de5c6"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=701183258884:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-0d4a16c69c1be18c7",
+  "ami:account=701183258884:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-09bb28e86b754a476",
+  "vpc-provider:account=115539480706:filter.isDefault=true:region=us-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0fe6f7ec56359b12e",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "115539480706",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0fae3334b37f8d229",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-west-2a",
+            "routeTableId": "rtb-0e08d467a21b5c4be"
+          },
+          {
+            "subnetId": "subnet-0f9bdb6218f0f3ffb",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-west-2b",
+            "routeTableId": "rtb-0e08d467a21b5c4be"
+          },
+          {
+            "subnetId": "subnet-0b934cb60ea1bc5d7",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-west-2c",
+            "routeTableId": "rtb-0e08d467a21b5c4be"
+          },
+          {
+            "subnetId": "subnet-065a88ef3a2e84a1a",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-west-2d",
+            "routeTableId": "rtb-0e08d467a21b5c4be"
+          }
+        ]
+      }
+    ]
+  },
+  "ami:account=115539480706:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-0d4a16c69c1be18c7",
+  "ami:account=115539480706:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-13.2*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-09bb28e86b754a476",
+  "ami:account=115539480706:filters.architecture.0=arm64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-0e5349f5a75d185ea",
+  "ami:account=115539480706:filters.architecture.0=x86_64_mac:filters.image-type.0=machine:filters.name.0=amzn-ec2-macos-12.6*:filters.owner-alias.0=amazon:filters.root-device-type.0=ebs:filters.state.0=available:filters.virtualization-type.0=hvm:region=us-west-2": "ami-00c65df9e5e99ed74"
 }

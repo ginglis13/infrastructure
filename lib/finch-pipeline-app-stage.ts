@@ -2,9 +2,12 @@ import * as cdk from 'aws-cdk-lib';
 import { CfnOutput } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { ArtifactBucketCloudfrontStack } from './artifact-bucket-cloudfront';
+import * as ecr from 'aws-cdk-lib/aws-ecr';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import { ASGRunnerStack } from './asg-runner-stack';
+// import { ASGRunnerStack } from './asg-runner-stack';
 import { ContinuousIntegrationStack } from './continuous-integration-stack';
+import { ECRRepositoryStack } from './ecr-repo-stack';
+import { ECREnhancedScanningEnabler } from './ecr-repo-image-scanning-stack';
 import { PVREReportingStack } from './pvre-reporting-stack';
 import { RunnerProps } from '../config/runner-config';
 
@@ -21,19 +24,21 @@ interface FinchPipelineAppStageProps extends cdk.StageProps {
 
 export class FinchPipelineAppStage extends cdk.Stage {
   artifactBucketCloudfrontUrlOutput: CfnOutput;
+  ecrRepositoryOutput: CfnOutput;
   public readonly cloudfrontBucket: s3.Bucket;
+  public readonly ecrRepository: ecr.Repository;
 
   constructor(scope: Construct, id: string, props: FinchPipelineAppStageProps) {
     super(scope, id, props);
-    props.runnerConfig.runnerTypes.forEach((runnerType) => {
-      const ASGStackName = 'ASG' + '-' + runnerType.repo + '-' + runnerType.macOSVersion.split('.')[0] + '-' + runnerType.arch + 'Stack'
-      new ASGRunnerStack(this, ASGStackName , {
-        env: props.env,
-        stage: props.environmentStage,
-        licenseArn: props.runnerConfig.licenseArn,
-        type: runnerType
-      });
-    });
+    // props.runnerConfig.runnerTypes.forEach((runnerType) => {
+    //   const ASGStackName = 'ASG' + '-' + runnerType.repo + '-' + runnerType.macOSVersion.split('.')[0] + '-' + runnerType.arch + 'Stack'
+    //   new ASGRunnerStack(this, ASGStackName , {
+    //     env: props.env,
+    //     stage: props.environmentStage,
+    //     licenseArn: props.runnerConfig.licenseArn,
+    //     type: runnerType
+    //   });
+    // });
 
     if (props.environmentStage !== ENVIRONMENT_STAGE.Release) {
       const artifactBucketCloudfrontStack = new ArtifactBucketCloudfrontStack(
@@ -44,7 +49,23 @@ export class FinchPipelineAppStage extends cdk.Stage {
       this.artifactBucketCloudfrontUrlOutput = artifactBucketCloudfrontStack.urlOutput;
       this.cloudfrontBucket = artifactBucketCloudfrontStack.bucket;
 
-      new ContinuousIntegrationStack(this, 'FinchContinuousIntegrationStack', this.stageName);
+      const ecrRepositoryStack = new ECRRepositoryStack(
+        this,
+        'ECRRepositoryStack',
+        this.stageName
+      );
+
+      this.ecrRepositoryOutput = ecrRepositoryStack.repositoryOutput;
+      this.ecrRepository = ecrRepositoryStack.repository;
+
+      new ECREnhancedScanningEnabler(this, "ECREnhancedImageScanningStack");
+
+      new ContinuousIntegrationStack(
+        this, 
+        'FinchContinuousIntegrationStack', 
+        this.stageName, 
+        {rootfsEcrRepository: this.ecrRepository}
+      );
     }
 
     new PVREReportingStack(this, 'PVREReportingStack');
