@@ -9,6 +9,8 @@ import { ContinuousIntegrationStack } from './continuous-integration-stack';
 import { ECRRepositoryStack } from './ecr-repo-stack';
 import { PVREReportingStack } from './pvre-reporting-stack';
 import { RunnerProps } from '../config/runner-config';
+// import { LambdaImageScanningNotificationsStack } from './lambda-image-scanning-notifications-stack';
+import { EventBridgeScanNotifsStack } from './event-bridge-scan-notifs-stack';
 
 export enum ENVIRONMENT_STAGE {
   Beta,
@@ -29,15 +31,15 @@ export class FinchPipelineAppStage extends cdk.Stage {
 
   constructor(scope: Construct, id: string, props: FinchPipelineAppStageProps) {
     super(scope, id, props);
-    props.runnerConfig.runnerTypes.forEach((runnerType) => {
-      const ASGStackName = 'ASG' + '-' + runnerType.repo + '-' + runnerType.macOSVersion.split('.')[0] + '-' + runnerType.arch + 'Stack'
-      new ASGRunnerStack(this, ASGStackName , {
-        env: props.env,
-        stage: props.environmentStage,
-        licenseArn: props.runnerConfig.licenseArn,
-        type: runnerType
-      });
-    });
+    // props.runnerConfig.runnerTypes.forEach((runnerType) => {
+    //   const ASGStackName = 'ASG' + '-' + runnerType.repo + '-' + runnerType.macOSVersion.split('.')[0] + '-' + runnerType.arch + 'Stack'
+    //   new ASGRunnerStack(this, ASGStackName , {
+    //     env: props.env,
+    //     stage: props.environmentStage,
+    //     licenseArn: props.runnerConfig.licenseArn,
+    //     type: runnerType
+    //   });
+    // });
 
     if (props.environmentStage !== ENVIRONMENT_STAGE.Release) {
       const artifactBucketCloudfrontStack = new ArtifactBucketCloudfrontStack(
@@ -56,6 +58,9 @@ export class FinchPipelineAppStage extends cdk.Stage {
 
       this.ecrRepositoryOutput = ecrRepositoryStack.repositoryOutput;
       this.ecrRepository = ecrRepositoryStack.repository;
+
+      // new LambdaImageScanningNotificationsStack(this, 'LambdaImageScanningNotificationsStack', this.stageName)
+      new EventBridgeScanNotifsStack(this, 'EventBridgeScanNotifsStack', this.stageName)
 
       new ContinuousIntegrationStack(
         this, 

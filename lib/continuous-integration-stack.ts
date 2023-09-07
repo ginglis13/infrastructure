@@ -35,7 +35,7 @@ export class ContinuousIntegrationStack extends cdk.Stack {
     cfnRole.addOverride('Properties.AssumeRolePolicyDocument.Statement.0.Condition', {
       StringLike: {
         'token.actions.githubusercontent.com:aud': 'sts.amazonaws.com',
-        'token.actions.githubusercontent.com:sub': 'repo:runfinch/*'
+        'token.actions.githubusercontent.com:sub': 'repo:ginglis13/infrastructure'
       }
     });
 

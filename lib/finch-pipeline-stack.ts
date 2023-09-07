@@ -10,15 +10,19 @@ export class FinchPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const source = CodePipelineSource.gitHub('runfinch/infrastructure', 'main', {
-      authentication: cdk.SecretValue.secretsManager('pipeline-github-access-token')
+    const source = CodePipelineSource.gitHub('ginglis13/infrastructure', 'image-scanning-notifs', {
+      authentication: cdk.SecretValue.secretsManager('giinglis-pipeline-github-access-token')
     });
+
+    // const securityEmail = cdk.SecretValue.secretsManager('giinglis-security-notifications-email')
+    // const cdkSynthCmd = `npx cdk synth --parameter email=${securityEmail.unsafeUnwrap()}`
 
     const pipeline = new CodePipeline(this, 'FinchPipeline', {
       pipelineName: 'FinchPipeline',
       crossAccountKeys: true,
       synth: new ShellStep('Synth', {
         input: source,
+        // commands: ['npm ci', 'npm run build', `npx cdk synth --parameter email=${securityEmail}`]
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
     });
@@ -55,14 +59,14 @@ export class FinchPipelineStack extends cdk.Stack {
     });
     wave.addStage(prodApp);
 
-    const releaseApp = new FinchPipelineAppStage(this, 'Release', {
-      environmentStage: ENVIRONMENT_STAGE.Release,
-      env: {
-        account: EnvConfig.envRelease.account,
-        region: EnvConfig.envRelease.region
-      },
-      runnerConfig: RunnerConfig.runnerRelease
-    });
-    wave.addStage(releaseApp);
+    // const releaseApp = new FinchPipelineAppStage(this, 'Release', {
+    //   environmentStage: ENVIRONMENT_STAGE.Release,
+    //   env: {
+    //     account: EnvConfig.envRelease.account,
+    //     region: EnvConfig.envRelease.region
+    //   },
+    //   runnerConfig: RunnerConfig.runnerRelease
+    // });
+    // wave.addStage(releaseApp);
   }
 }

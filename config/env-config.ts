@@ -26,10 +26,10 @@ class EnvConfigClass {
     }
     this.envProd = configFile.envProd;
 
-    if (!configFile.envRelease) {
-      throw new Error('Error: envRelease must be specified.');
-    }
-    this.envRelease = configFile.envRelease;
+    // if (!configFile.envRelease) {
+    //   throw new Error('Error: envRelease must be specified.');
+    // }
+    // this.envRelease = configFile.envRelease;
   }
 }
 
