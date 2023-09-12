@@ -1,12 +1,14 @@
 import config from './runner-config.json';
 
 export interface RunnerProps {
-  licenseArn: string;
+  macLicenseArn: string;
+  windowsLicenseArn: string;
   runnerTypes: Array<RunnerType>;
 }
 
 export interface RunnerType {
-  macOSVersion: string;
+  platform: string; // windows or macOS
+  version: string; // e.g. 13.2 if platform == macOS, server-2022 if platform == windows
   arch: string;
   repo: string;
   desiredInstances: number;

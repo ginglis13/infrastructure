@@ -31,15 +31,16 @@ export class FinchPipelineAppStage extends cdk.Stage {
 
   constructor(scope: Construct, id: string, props: FinchPipelineAppStageProps) {
     super(scope, id, props);
-    // props.runnerConfig.runnerTypes.forEach((runnerType) => {
-    //   const ASGStackName = 'ASG' + '-' + runnerType.repo + '-' + runnerType.macOSVersion.split('.')[0] + '-' + runnerType.arch + 'Stack'
-    //   new ASGRunnerStack(this, ASGStackName , {
-    //     env: props.env,
-    //     stage: props.environmentStage,
-    //     licenseArn: props.runnerConfig.licenseArn,
-    //     type: runnerType
-    //   });
-    // });
+    props.runnerConfig.runnerTypes.forEach((runnerType) => {
+      const ASGStackName = 'ASG' + '-' + runnerType.platform + '-' + runnerType.repo + '-' + runnerType.version.split('.')[0] + '-' + runnerType.arch + 'Stack'
+      const licenseArn = runnerType.platform === 'windows' ? props.runnerConfig.windowsLicenseArn : props.runnerConfig.macLicenseArn
+      new ASGRunnerStack(this, ASGStackName , {
+        env: props.env,
+        stage: props.environmentStage,
+        licenseArn: licenseArn,
+        type: runnerType
+      });
+    });
 
     if (props.environmentStage !== ENVIRONMENT_STAGE.Release) {
       const artifactBucketCloudfrontStack = new ArtifactBucketCloudfrontStack(
@@ -59,7 +60,6 @@ export class FinchPipelineAppStage extends cdk.Stage {
       this.ecrRepositoryOutput = ecrRepositoryStack.repositoryOutput;
       this.ecrRepository = ecrRepositoryStack.repository;
 
-      // new LambdaImageScanningNotificationsStack(this, 'LambdaImageScanningNotificationsStack', this.stageName)
       new EventBridgeScanNotifsStack(this, 'EventBridgeScanNotifsStack', this.stageName)
 
       new ContinuousIntegrationStack(

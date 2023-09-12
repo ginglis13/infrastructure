@@ -1,81 +1,125 @@
 {
     "runnerBeta": {
-        "licenseArn": "arn:aws:license-manager:us-west-2:820462304213:license-configuration:lic-7ac3e249bd13f71b44ac34963a8c3353",
+        "macLicenseArn": "arn:aws:license-manager:us-west-2:701183258884:license-configuration:lic-a0c5483ca54aa097ac2d940688fe6539",
+        "windowsLicenseArn": "arn:aws:license-manager:us-west-2:701183258884:license-configuration:lic-68c5483ccb01ce9ae32f00e505716f32",
         "runnerTypes": [
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "arm",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "x86",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
+            },
+            {
+                "platform": "windows",
+                "version": "2022",
+                "arch": "x86",
+                "repo": "finch",
+                "desiredInstances": 1,
+                "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
+            },
+            {
+                "platform": "windows",
+                "version": "2022",
+                "arch": "x86",
+                "repo": "finch-core",
+                "desiredInstances": 1,
+                "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             }
         ]
     },
     "runnerProd": {
-        "licenseArn": "arn:aws:license-manager:us-west-2:090529234398:license-configuration:lic-c0c3e2458f6d2a45b0bcc8d66fbc072e",
+        "macLicenseArn": "arn:aws:license-manager:us-west-2:115539480706:license-configuration:lic-fac5483df4c2e97d1f2bb1895b4e280f",
+        "windowsLicenseArn": "arn:aws:license-manager:us-west-2:115539480706:license-configuration:lic-6cc5483e242f82700452bc4fd6ae04d4",
         "runnerTypes": [
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "arm",
                 "repo": "finch",
                 "desiredInstances": 2,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "x86",
                 "repo": "finch",
                 "desiredInstances": 2,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
             },
             {
-                "macOSVersion": "12.6",
+                "platform": "macOS",
+                "version": "12.6",
                 "arch": "arm",
                 "repo": "finch",
                 "desiredInstances": 2,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             },
             {
-                "macOSVersion": "12.6",
+                "platform": "macOS",
+                "version": "12.6",
                 "arch": "x86",
                 "repo": "finch",
                 "desiredInstances": 2,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "arm",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "x86",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
             },
             {
-                "macOSVersion": "12.6",
+                "platform": "macOS",
+                "version": "12.6",
                 "arch": "arm",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             },
             {
-                "macOSVersion": "12.6",
+                "platform": "macOS",
+                "version": "12.6",
                 "arch": "x86",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"]
+            },
+            {
+                "platform": "windows",
+                "version": "2022",
+                "arch": "x86",
+                "repo": "finch",
+                "desiredInstances": 1,
+                "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
+            },
+            {
+                "platform": "windows",
+                "version": "2022",
+                "arch": "x86",
+                "repo": "finch-core",
+                "desiredInstances": 1,
+                "availabilityZones": ["us-west-2a", "us-west-2b", "us-west-2c", "us-west-2d"] 
             }
         ]
     },
@@ -83,70 +127,80 @@
         "licenseArn": "arn:aws:license-manager:us-east-2:019528120233:license-configuration:lic-94c3e244cb74a70c90c82f432e9e0d91",
         "runnerTypes": [
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "arm",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "x86",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "12.6",
+                "platform": "macOS",
+                "version": "12.6",
                 "arch": "arm",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "12.6",
+                "platform": "macOS",
+                "version": "12.6",
                 "arch": "x86",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "11.7",
+                "platform": "macOS",
+                "version": "11.7",
                 "arch": "arm",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "11.7",
+                "platform": "macOS",
+                "version": "11.7",
                 "arch": "x86",
                 "repo": "finch",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"]
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "arm",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "13.2",
+                "platform": "macOS",
+                "version": "13.2",
                 "arch": "x86",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "11.7",
+                "platform": "macOS",
+                "version": "11.7",
                 "arch": "arm",
                 "repo": "finch-core",
                 "desiredInstances": 1,
                 "availabilityZones": ["us-east-2a", "us-east-2b", "us-east-2c"] 
             },
             {
-                "macOSVersion": "11.7",
+                "platform": "macOS",
+                "version": "11.7",
                 "arch": "x86",
                 "repo": "finch-core",
                 "desiredInstances": 1,

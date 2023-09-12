@@ -10,19 +10,15 @@ export class FinchPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const source = CodePipelineSource.gitHub('ginglis13/infrastructure', 'image-scanning-notifs', {
+    const source = CodePipelineSource.gitHub('ginglis13/infrastructure', 'windows-instances', {
       authentication: cdk.SecretValue.secretsManager('giinglis-pipeline-github-access-token')
     });
-
-    // const securityEmail = cdk.SecretValue.secretsManager('giinglis-security-notifications-email')
-    // const cdkSynthCmd = `npx cdk synth --parameter email=${securityEmail.unsafeUnwrap()}`
 
     const pipeline = new CodePipeline(this, 'FinchPipeline', {
       pipelineName: 'FinchPipeline',
       crossAccountKeys: true,
       synth: new ShellStep('Synth', {
         input: source,
-        // commands: ['npm ci', 'npm run build', `npx cdk synth --parameter email=${securityEmail}`]
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
     });
